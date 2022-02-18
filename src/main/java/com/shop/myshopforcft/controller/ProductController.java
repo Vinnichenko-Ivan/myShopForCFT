@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/product")
 public class ProductController {
 
-    @ApiOperation("проверка работы")
+    @ApiOperation("Проверка работы.")
     @PostMapping("/test")
-    public void deletePost(){
+    public void test(){
     }
 }
