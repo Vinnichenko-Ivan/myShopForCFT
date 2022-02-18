@@ -33,5 +33,4 @@ public class Product {
     @Setter
     private Long countOnStore;
 
-
 }
