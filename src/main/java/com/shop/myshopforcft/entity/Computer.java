@@ -17,17 +17,12 @@ public class Computer{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     @Getter
-    private UUID id;
+    private Long id;
 
     @Getter
     @Setter
     @Column(name = "form_factor")
     private ComputerFormFactor formFactor;
-
-    @Getter
-    @Setter
-    @Column(name = "size")
-    private Double size;
 
     @Getter
     @Setter
