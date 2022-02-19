@@ -1,6 +1,6 @@
 package com.shop.myshopforcft.repository;
 
-import com.shop.myshopforcft.entity.Disk;
+import com.shop.myshopforcft.entityanddto.Disk;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

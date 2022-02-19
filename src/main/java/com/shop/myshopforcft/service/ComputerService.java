@@ -1,9 +1,6 @@
 package com.shop.myshopforcft.service;
 
-import com.shop.myshopforcft.entity.Computer;
-import com.shop.myshopforcft.entity.enums.ComputerFormFactor;
-import lombok.Getter;
-import lombok.Setter;
+import com.shop.myshopforcft.dto.ComputerDto;
 
 import java.util.List;
 
@@ -15,48 +12,26 @@ public interface ComputerService {
 
     /**
      * Метод добавления нового компьютера.
-     * @param formFactor форм-фактор
-     * @param number серия
-     * @param manufacturer производитель
-     * @param price цена
-     * @param countOnStore количество товара в магазине
+     * @param computerDto Компьютер который нужно сохранить. Id будет изменено.
      */
-    void addComputer(
-            ComputerFormFactor formFactor,
-            Long number,
-            String manufacturer,
-            Double price,
-            Long countOnStore
-    );
+    void addComputer(ComputerDto computerDto);
 
     /**
      * Метод получения всех компьютеров.
      */
-    List<Computer> getAll();
+    List<ComputerDto> getAll();
 
     /**
      * Метод получения компьютера по id
      * @param id ид компьютера
      */
-    Computer getComputer(Long id);
+    ComputerDto getComputer(Long id);
 
     /**
-     * Метод добавления нового компьютера.
-     * @param id ид редактируемого компьютера
-     * @param formFactor форм-фактор
-     * @param number серия
-     * @param manufacturer производитель
-     * @param price цена
-     * @param countOnStore количество товара в магазине
+     * Метод редактирования компьютера.
+     * @param computerDto Компьютер который нужно изменить. id берется из dto.
      */
-    void updateComputer(
-            Long id,
-            ComputerFormFactor formFactor,
-            Long number,
-            String manufacturer,
-            Double price,
-            Long countOnStore
-    );
+    void updateComputer(ComputerDto computerDto);
 
     /**
      * Удаление компьютера

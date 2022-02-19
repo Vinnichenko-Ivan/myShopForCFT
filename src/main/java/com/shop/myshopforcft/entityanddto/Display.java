@@ -1,18 +1,16 @@
-package com.shop.myshopforcft.entity;
+package com.shop.myshopforcft.entityanddto;
 
-import com.shop.myshopforcft.entity.enums.ComputerFormFactor;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.UUID;
 
 /**
  * @author Ivan Vinnichenko
  */
 @Entity
-@Table(name = "computers")
-public class Computer{
+@Table(name = "displays")
+public class Display {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
@@ -21,8 +19,7 @@ public class Computer{
 
     @Getter
     @Setter
-    @Column(name = "form_factor")
-    private ComputerFormFactor formFactor;
+    private Double size;
 
     @Getter
     @Setter

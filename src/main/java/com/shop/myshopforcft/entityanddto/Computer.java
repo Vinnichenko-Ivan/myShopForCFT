@@ -1,26 +1,27 @@
-package com.shop.myshopforcft.entity;
+package com.shop.myshopforcft.entityanddto;
 
+import com.shop.myshopforcft.entityanddto.enums.ComputerFormFactor;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.UUID;
 
 /**
  * @author Ivan Vinnichenko
  */
 @Entity
-@Table(name = "notebooks")
-public class Notebook {
+@Table(name = "computers")
+public class Computer{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     @Getter
-    private UUID id;
+    private Long id;
 
     @Getter
     @Setter
-    private Double size;
+    @Column(name = "form_factor")
+    private ComputerFormFactor formFactor;
 
     @Getter
     @Setter

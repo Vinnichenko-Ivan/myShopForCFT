@@ -1,8 +1,8 @@
 package com.shop.myshopforcft.service.impl;
 
-import com.shop.myshopforcft.entity.Computer;
-import com.shop.myshopforcft.entity.Product;
-import com.shop.myshopforcft.entity.enums.ComputerFormFactor;
+import com.shop.myshopforcft.dto.ComputerDto;
+import com.shop.myshopforcft.entityanddto.Computer;
+import com.shop.myshopforcft.entityanddto.Product;
 import com.shop.myshopforcft.exception.ProductNotFoundException;
 import com.shop.myshopforcft.repository.ComputerRepository;
 import com.shop.myshopforcft.repository.ProductReposintory;
@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author Ivan Vinnichenko
@@ -29,19 +30,16 @@ public class ComputerServiceImpl implements ComputerService {
 
     @Transactional
     @Override
-    public void addComputer(ComputerFormFactor formFactor, Long number, String manufacturer, Double price, Long countOnStore) {
+    public void addComputer(ComputerDto computerDto) {
         Product product = new Product();
 
-        product.setCountOnStore(countOnStore);
-        product.setPrice(price);
-        product.setNumber(number);
-        product.setManufacturer(manufacturer);
+        product.setFromDto(computerDto.getProductDto());
 
         productReposintory.save(product);
 
         Computer computer = new Computer();
 
-        computer.setFormFactor(formFactor);
+        computer.setFormFactor(computerDto.getFormFactor());
         computer.setProduct(product);
 
         computerRepository.save(computer);
@@ -49,30 +47,38 @@ public class ComputerServiceImpl implements ComputerService {
 
     @Transactional
     @Override
-    public List<Computer> getAll(){
-        return computerRepository.findAll();
+    public List<ComputerDto> getAll(){
+        return computerRepository.findAll().stream().map(computer -> {
+            ComputerDto computerDto = new ComputerDto();
+            computerDto.setProductDto(computer.getProduct().getToDto());
+            computerDto.setId(computer.getId());
+            computerDto.setFormFactor(computer.getFormFactor());
+            return computerDto;
+        }).collect(Collectors.toList());
     }
 
     @Transactional
     @Override
-    public Computer getComputer(Long id){
-        return computerRepository.findById(id).orElseThrow(ProductNotFoundException::new);
-    }
-
-    @Transactional
-    @Override
-    public void updateComputer(Long id, ComputerFormFactor formFactor, Long number, String manufacturer, Double price, Long countOnStore) {
+    public ComputerDto getComputer(Long id){
         Computer computer = computerRepository.findById(id).orElseThrow(ProductNotFoundException::new);
+        ComputerDto computerDto = new ComputerDto();
+        computerDto.setId(computer.getId());
+        computerDto.setFormFactor(computer.getFormFactor());
+        computerDto.setProductDto(computer.getProduct().getToDto());
+        return computerDto;
+    }
+
+    @Transactional
+    @Override
+    public void updateComputer(ComputerDto computerDto) {
+        Computer computer = computerRepository.findById(computerDto.getId()).orElseThrow(ProductNotFoundException::new);
         Product product = computer.getProduct();
 
-        product.setCountOnStore(countOnStore);
-        product.setPrice(price);
-        product.setNumber(number);
-        product.setManufacturer(manufacturer);
+        product.setFromDto(computerDto.getProductDto());
 
         productReposintory.save(product);
 
-        computer.setFormFactor(formFactor);
+        computer.setFormFactor(computerDto.getFormFactor());
         computer.setProduct(product);
 
         computerRepository.save(computer);

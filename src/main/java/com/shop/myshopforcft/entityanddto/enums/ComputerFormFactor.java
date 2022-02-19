@@ -1,4 +1,4 @@
-package com.shop.myshopforcft.entity.enums;
+package com.shop.myshopforcft.entityanddto.enums;
 
 /**
  * @author Ivan Vinnichenko
