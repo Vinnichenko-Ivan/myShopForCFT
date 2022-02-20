@@ -1,4 +1,4 @@
-package com.shop.myshopforcft.entityanddto;
+package com.shop.myshopforcft.entity;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -9,8 +9,8 @@ import javax.persistence.*;
  * @author Ivan Vinnichenko
  */
 @Entity
-@Table(name = "notebooks")
-public class Notebook {
+@Table(name = "disks")
+public class Disk {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
@@ -19,6 +19,7 @@ public class Notebook {
 
     @Getter
     @Setter
+    @Column(name = "size")
     private Double size;
 
     @Getter

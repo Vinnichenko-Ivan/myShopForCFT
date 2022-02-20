@@ -1,8 +1,8 @@
 package com.shop.myshopforcft.service.impl;
 
 import com.shop.myshopforcft.dto.DisplayDto;
-import com.shop.myshopforcft.entityanddto.Display;
-import com.shop.myshopforcft.entityanddto.Product;
+import com.shop.myshopforcft.entity.Display;
+import com.shop.myshopforcft.entity.Product;
 import com.shop.myshopforcft.exception.ProductNotFoundException;
 import com.shop.myshopforcft.repository.DisplayRepository;
 import com.shop.myshopforcft.repository.ProductReposintory;
@@ -40,7 +40,7 @@ public class DisplayServiceImpl implements DisplayService {
 
         Display display = new Display();
 
-        display.setSize(displayDto.getSize());
+        display.setDiagonal(displayDto.getDiagonal());
         display.setProduct(product);
 
         displayRepository.save(display);
@@ -53,7 +53,7 @@ public class DisplayServiceImpl implements DisplayService {
             DisplayDto displayDto = new DisplayDto();
             displayDto.setProductDto(display.getProduct().getToDto());
             displayDto.setId(display.getId());
-            displayDto.setSize(display.getSize());
+            displayDto.setDiagonal(display.getDiagonal());
             return displayDto;
         }).collect(Collectors.toList());
     }
@@ -64,7 +64,7 @@ public class DisplayServiceImpl implements DisplayService {
         Display display = displayRepository.findById(id).orElseThrow(ProductNotFoundException::new);
         DisplayDto displayDto = new DisplayDto();
         displayDto.setId(display.getId());
-        displayDto.setSize(display.getSize());
+        displayDto.setDiagonal(display.getDiagonal());
         displayDto.setProductDto(display.getProduct().getToDto());
         return displayDto;
     }
@@ -79,7 +79,7 @@ public class DisplayServiceImpl implements DisplayService {
 
         productReposintory.save(product);
 
-        display.setSize(displayDto.getSize());
+        display.setDiagonal(displayDto.getDiagonal());
         display.setProduct(product);
 
         displayRepository.save(display);
@@ -89,6 +89,7 @@ public class DisplayServiceImpl implements DisplayService {
     @Override
     public void deleteDisplay(Long id){
         Display display = displayRepository.findById(id).orElseThrow(ProductNotFoundException::new);
+        productReposintory.delete(display.getProduct());
         displayRepository.delete(display);
     }
 }

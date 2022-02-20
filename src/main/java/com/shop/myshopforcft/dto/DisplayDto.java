@@ -8,9 +8,9 @@ import lombok.Data;
 @Data
 public class DisplayDto {
 
-    private  Long id;
+    private Long id;
 
-    private Double size;
+    private Double diagonal;
 
     private ProductDto productDto;
 }

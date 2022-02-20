@@ -1,4 +1,4 @@
-package com.shop.myshopforcft.entityanddto;
+package com.shop.myshopforcft.entity;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -19,7 +19,7 @@ public class Display {
 
     @Getter
     @Setter
-    private Double size;
+    private Double diagonal;
 
     @Getter
     @Setter

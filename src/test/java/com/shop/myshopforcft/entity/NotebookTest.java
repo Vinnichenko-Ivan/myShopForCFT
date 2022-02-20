@@ -1,4 +1,4 @@
-package com.shop.myshopforcft.entityanddto;
+package com.shop.myshopforcft.entity;
 
 import com.shop.myshopforcft.dto.NotebookDto;
 import com.shop.myshopforcft.dto.ProductDto;
@@ -18,15 +18,15 @@ public class NotebookTest {
 
         product.setManufacturer("Apple");
         product.setPrice(999.99);
-        product.setNumber(12322l);
-        product.setCountOnStore(3l);
+        product.setNumber(12322L);
+        product.setCountOnStore(3L);
 
         notebook.setProduct(product);
         notebook.setSize(1024.0);
 
-        assertEquals(notebook.getProduct().getCountOnStore(), 3l);
+        assertEquals(notebook.getProduct().getCountOnStore(), 3L);
         assertEquals(notebook.getProduct().getManufacturer(), "Apple");
-        assertEquals(notebook.getProduct().getNumber(), 12322l);
+        assertEquals(notebook.getProduct().getNumber(), 12322L);
         assertEquals(notebook.getProduct().getPrice(), 999.99);
         assertEquals(notebook.getSize(), 1024.0);
 
@@ -40,15 +40,15 @@ public class NotebookTest {
 
         productDto.setManufacturer("Apple");
         productDto.setPrice(999.99);
-        productDto.setNumber(12322l);
-        productDto.setCountOnStore(3l);
+        productDto.setNumber(12322L);
+        productDto.setCountOnStore(3L);
 
         notebookDto.setProductDto(productDto);
         notebookDto.setSize(123.0);
 
-        assertEquals(notebookDto.getProductDto().getCountOnStore(), 3l);
+        assertEquals(notebookDto.getProductDto().getCountOnStore(), 3L);
         assertEquals(notebookDto.getProductDto().getManufacturer(), "Apple");
-        assertEquals(notebookDto.getProductDto().getNumber(), 12322l);
+        assertEquals(notebookDto.getProductDto().getNumber(), 12322L);
         assertEquals(notebookDto.getProductDto().getPrice(), 999.99);
         assertEquals(notebookDto.getSize(), 123.0);
 

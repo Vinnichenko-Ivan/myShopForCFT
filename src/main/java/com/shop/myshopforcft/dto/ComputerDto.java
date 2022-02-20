@@ -1,6 +1,6 @@
 package com.shop.myshopforcft.dto;
 
-import com.shop.myshopforcft.entityanddto.enums.ComputerFormFactor;
+import com.shop.myshopforcft.entity.enums.ComputerFormFactor;
 import lombok.Data;
 
 /**

@@ -1,8 +1,8 @@
 package com.shop.myshopforcft.service.impl;
 
 import com.shop.myshopforcft.dto.DiskDto;
-import com.shop.myshopforcft.entityanddto.Disk;
-import com.shop.myshopforcft.entityanddto.Product;
+import com.shop.myshopforcft.entity.Disk;
+import com.shop.myshopforcft.entity.Product;
 import com.shop.myshopforcft.exception.ProductNotFoundException;
 import com.shop.myshopforcft.repository.DisksRepository;
 import com.shop.myshopforcft.repository.ProductReposintory;
@@ -89,6 +89,7 @@ public class DiskServiceImpl implements DiskService {
     @Override
     public void deleteDisk(Long id){
         Disk disk = disksRepository.findById(id).orElseThrow(ProductNotFoundException::new);
+        productReposintory.delete(disk.getProduct());
         disksRepository.delete(disk);
     }
 }

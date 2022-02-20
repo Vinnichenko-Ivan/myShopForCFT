@@ -1,4 +1,4 @@
-package com.shop.myshopforcft.entityanddto;
+package com.shop.myshopforcft.entity;
 
 import com.shop.myshopforcft.dto.DiskDto;
 import com.shop.myshopforcft.dto.ProductDto;
@@ -19,15 +19,15 @@ public class DiskTest {
 
         product.setManufacturer("Apple");
         product.setPrice(999.99);
-        product.setNumber(12322l);
-        product.setCountOnStore(3l);
+        product.setNumber(12322L);
+        product.setCountOnStore(3L);
 
         disk.setProduct(product);
         disk.setSize(1024.0);
 
-        assertEquals(disk.getProduct().getCountOnStore(), 3l);
+        assertEquals(disk.getProduct().getCountOnStore(), 3L);
         assertEquals(disk.getProduct().getManufacturer(), "Apple");
-        assertEquals(disk.getProduct().getNumber(), 12322l);
+        assertEquals(disk.getProduct().getNumber(), 12322L);
         assertEquals(disk.getProduct().getPrice(), 999.99);
         assertEquals(disk.getSize(), 1024.0);
 
@@ -41,15 +41,15 @@ public class DiskTest {
 
         productDto.setManufacturer("Apple");
         productDto.setPrice(999.99);
-        productDto.setNumber(12322l);
-        productDto.setCountOnStore(3l);
+        productDto.setNumber(12322L);
+        productDto.setCountOnStore(3L);
 
         diskDto.setProductDto(productDto);
         diskDto.setSize(123.0);
 
-        assertEquals(diskDto.getProductDto().getCountOnStore(), 3l);
+        assertEquals(diskDto.getProductDto().getCountOnStore(), 3L);
         assertEquals(diskDto.getProductDto().getManufacturer(), "Apple");
-        assertEquals(diskDto.getProductDto().getNumber(), 12322l);
+        assertEquals(diskDto.getProductDto().getNumber(), 12322L);
         assertEquals(diskDto.getProductDto().getPrice(), 999.99);
         assertEquals(diskDto.getSize(), 123.0);
 

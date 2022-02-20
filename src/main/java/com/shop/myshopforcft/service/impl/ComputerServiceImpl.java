@@ -1,8 +1,8 @@
 package com.shop.myshopforcft.service.impl;
 
 import com.shop.myshopforcft.dto.ComputerDto;
-import com.shop.myshopforcft.entityanddto.Computer;
-import com.shop.myshopforcft.entityanddto.Product;
+import com.shop.myshopforcft.entity.Computer;
+import com.shop.myshopforcft.entity.Product;
 import com.shop.myshopforcft.exception.ProductNotFoundException;
 import com.shop.myshopforcft.repository.ComputerRepository;
 import com.shop.myshopforcft.repository.ProductReposintory;
@@ -88,6 +88,7 @@ public class ComputerServiceImpl implements ComputerService {
     @Override
     public void deleteComputer(Long id){
         Computer computer = computerRepository.findById(id).orElseThrow(ProductNotFoundException::new);
+        productReposintory.delete(computer.getProduct());
         computerRepository.delete(computer);
     }
 

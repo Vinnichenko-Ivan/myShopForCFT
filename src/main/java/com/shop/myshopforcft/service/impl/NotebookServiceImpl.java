@@ -1,8 +1,8 @@
 package com.shop.myshopforcft.service.impl;
 
 import com.shop.myshopforcft.dto.NotebookDto;
-import com.shop.myshopforcft.entityanddto.Notebook;
-import com.shop.myshopforcft.entityanddto.Product;
+import com.shop.myshopforcft.entity.Notebook;
+import com.shop.myshopforcft.entity.Product;
 import com.shop.myshopforcft.exception.ProductNotFoundException;
 import com.shop.myshopforcft.repository.NotebookRepository;
 import com.shop.myshopforcft.repository.ProductReposintory;
@@ -88,6 +88,7 @@ public class NotebookServiceImpl implements NotebookService {
     @Override
     public void deleteNotebook(Long id){
         Notebook notebook = notebookRepository.findById(id).orElseThrow(ProductNotFoundException::new);
+        productReposintory.delete(notebook.getProduct());
         notebookRepository.delete(notebook);
     }
 }

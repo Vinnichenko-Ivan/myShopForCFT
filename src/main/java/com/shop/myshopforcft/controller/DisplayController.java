@@ -23,7 +23,7 @@ public class DisplayController {
     private final DisplayService displayService;
 
     @ApiOperation("Добавление нового дисплея.")
-    @PostMapping("/addNewComputer")
+    @PostMapping("/addNewDisplay")
     public void addNewDisk(DisplayDto displayDto) {
         displayService.addDisplay(displayDto);
     }
