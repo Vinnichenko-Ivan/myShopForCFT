@@ -11,14 +11,11 @@ import org.springframework.web.bind.annotation.RestController;
 /**
  * @author Ivan Vinnichenko
  */
+//Контроллер оставлен на случай расширения функционала.
 @Api
 @RestController
 @RequestMapping("/product")
 @RequiredArgsConstructor(onConstructor_ = @Autowired)
 public class ProductController {
 
-    @ApiOperation("Проверка работы.")
-    @PostMapping("/test")
-    public void test(){
-    }
 }
